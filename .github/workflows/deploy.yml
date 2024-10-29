@@ -1,0 +1,13 @@
+name: Promote Version to Stable
+
+on:
+  release:
+    types: [ released ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo the version
+        run: echo ${{github.ref_name}}
