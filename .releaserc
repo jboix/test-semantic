@@ -80,7 +80,10 @@
     [
       "@semantic-release/github",
       {
-        "prerelease": true
+        "branch": {
+          "name":"main",
+          "prerelease": true
+        }
       }
     ]
   ]
