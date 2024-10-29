@@ -2,31 +2,19 @@ name: Promote Version to Stable
 
 on:
   release:
-    types: [released, edited]
+    types: [edited]
 
 jobs:
-  check_latest_release:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check if release is the latest
-        id: check_latest
+      - name: Dump env
+        run: env | sort
+      - name: Dump GitHub context
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Echo the version
         run: |
-          # Get the tag name of the latest release
-          LATEST_TAG=$(curl -s -H "Authorization: Bearer $GITHUB_TOKEN" \
-            ${{ github.api_url }}/repos/${{ github.repository }}/releases/latest | jq -r .tag_name)
-
-          # Check if the current release matches the latest release tag
-          if [[ "${GITHUB_REF##*/}" == "$LATEST_TAG" ]]; then
-            echo "is_latest=true" >> $GITHUB_ENV
-          else
-            echo "is_latest=false" >> $GITHUB_ENV
-          fi
-
-      - name: Run only if latest release
-        if: env.is_latest == 'true'
-        run: |
-          echo "This is the latest release!"
-          # Add any additional steps for the latest release here
-
+          echo ${{github.event.release.isLatest}}
