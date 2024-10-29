@@ -1,13 +1,6 @@
 {
   "branches": [
-    {
-      "name": "release"
-    },
-    {
-      "name": "main",
-      "channel": "pre-release",
-      prerelease: true
-    }
+    "main"
   ],
   "plugins": [
     "@semantic-release/commit-analyzer",
@@ -87,7 +80,10 @@
       }
     ],
     [
-      "@semantic-release/github"
+      "@semantic-release/github",
+      {
+        "preRelease": true
+      }
     ]
   ]
 }
