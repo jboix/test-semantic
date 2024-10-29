@@ -2,7 +2,7 @@ name: Promote Version to Stable
 
 on:
   release:
-    types: [ published ]
+    types: [ released ]
 
 jobs:
   deploy:
