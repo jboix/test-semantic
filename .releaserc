@@ -1,11 +1,12 @@
 {
   "branches": [
     {
-      "name": "release",
-      "channel": "latest"
+      "name": "release"
     },
     {
-      "name": "main"
+      "name": "main",
+      "channel": "pre-release",
+      prerelease: true
     }
   ],
   "plugins": [
