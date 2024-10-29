@@ -1,5 +1,5 @@
 {
-  "branches": ["main"],
+  "branches": [{"name": "main", "prerelease": true}],
   "plugins": [
     "@semantic-release/commit-analyzer",
     [
@@ -78,13 +78,7 @@
       }
     ],
     [
-      "@semantic-release/github",
-      {
-        "branch": {
-          "name":"main",
-          "prerelease": true
-        }
-      }
+      "@semantic-release/github"
     ]
   ]
 }
