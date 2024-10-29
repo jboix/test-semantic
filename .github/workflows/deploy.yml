@@ -2,7 +2,7 @@ name: Promote Version to Stable
 
 on:
   release:
-    types: [published]
+    types: [released]
 
 jobs:
   deploy:
@@ -17,4 +17,4 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Echo the version
         run: |
-          echo ${{github.event.release.isLatest}}
+          echo ${GITHUB_REF_NAME#v}
