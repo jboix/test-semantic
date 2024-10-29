@@ -6,7 +6,7 @@
     },
     {
       "name": "main",
-      "prerelease": false
+      "prerelease": true
     }
   ],
   "plugins": [
